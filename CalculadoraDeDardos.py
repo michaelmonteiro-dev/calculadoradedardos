@@ -1,12 +1,33 @@
+from random import shuffle
+# Tratamento de erros de entrada
+def leiaPontos(msg):
+    while True:
+        try:
+            ponto = int(input(msg))
+        except (ValueError, TypeError):
+            print('Entrada invalida, digite um número inteiro!')
+        else:
+            return ponto
+
+
 print('=-='*10)
 print('  * \033[4;35mCalculadora de Dardos\033[m *')
 print('=-='*10)
 
 while True:
-    # lê o nome dos jogadores
+    quantPontos = 50
+    # Pontuação maxima da partida
+    r = str(input('Deseja alterar a pontuação maxima padrão (S/N)? ')).strip().upper()
+    while r not in 'SN':
+        print('Entrada invalida, digite apenas "S" ou "N"')
+        r = str(input('Deseja alterar a pontuação maxima padrão (S/N)? ')).strip().upper()
+    if r == 'S':
+        quantPontos = leiaPontos('Digite a pontuação máxima da partida: ')       
+    print('=-='*10)
+    # Registra o nome dos jogadores
     nomes = []
     while True:
-        nome = str(input('Digite seu nome: ')).strip()
+        nome = str(input('Digite o nome do jogador: ')).strip().upper()
         nomes.append(nome)
         res = str(input('Deseja continuar (SN)? ')).strip().upper()
         print('=-='*10)
@@ -18,6 +39,8 @@ while True:
 
     # integrantes da partida
     print('        \033[4;33mParticipantes:\033[m')
+    print('Essa será a ordem de jogada dos participantes: ')
+    shuffle(nomes)
     for n in range(0, len(nomes)):
         print(nomes[n], end = ' | ')
     print('\n')
@@ -36,13 +59,13 @@ while True:
             print('\033[1;32mPróximo Jogador!\033[m')
             print('='*(len(nomes[n]) + 13))
             print(f'\033[1;34m{nomes[n]}\033[m é a sua vez!')
-            ponto = int(input('Digite o numero acertado: '))
+            ponto = leiaPontos('Digite o número acertado: ')
             p[n].append(ponto)
             print(f'Pontuação atual: \033[1;31m{sum(p[n])}\033[m')
             print('='*(len(nomes[n]) + 13))
-            if sum(p[n]) >= 50:
+            if sum(p[n]) >= quantPontos:
                 break
-        if sum(p[n]) >= 50:
+        if sum(p[n]) >= quantPontos:
             print(f'Temos um vencedor: \033[4;32m{nomes[n]}!\033[m')
             break
     print('\n')
