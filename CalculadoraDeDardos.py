@@ -1,5 +1,5 @@
 '''
-Este projeto foi escrito por mikelovi, com a ajuda ambundante do Rick.
+Este projeto foi escrito por mikelovi, com a ajuda abundante do Rick.
 Tá ligado como o bagulho é
 '''
 
