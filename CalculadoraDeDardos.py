@@ -1,5 +1,6 @@
 '''
 Este projeto foi escrito por mikelovi, com a ajuda ambundante do Rick.
+Tá ligado como o bagulho é
 '''
 
 
