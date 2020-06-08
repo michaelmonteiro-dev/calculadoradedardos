@@ -1,3 +1,8 @@
+'''
+Este projeto foi escrito por mikelovi, com a ajuda ambundante do Rick.
+'''
+
+
 from random import shuffle
 nomes = []
 # Tratamento de erros de entrada
